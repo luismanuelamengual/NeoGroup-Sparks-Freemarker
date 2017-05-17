@@ -10,16 +10,26 @@ import org.neogroup.sparks.views.ViewNotFoundException;
 
 import java.io.File;
 
+/**
+ * Freemarker view factory
+ */
 public class FreeMarkerViewFactory extends ViewFactory<FreeMarkerView> {
 
     public static final String TEMPLATE_NAMESPACE_SEPARATOR = ".";
 
     private final Configuration configuration;
 
+    /**
+     * Constructor for the view factory
+     * @param configuration freemarker configuration
+     */
     public FreeMarkerViewFactory(Configuration configuration) {
         this.configuration = configuration;
     }
 
+    /**
+     * Consctructor for the view factory
+     */
     public FreeMarkerViewFactory() {
         configuration = new Configuration(Configuration.VERSION_2_3_25);
         configuration.setDefaultEncoding("UTF-8");
@@ -28,10 +38,20 @@ public class FreeMarkerViewFactory extends ViewFactory<FreeMarkerView> {
         configuration.setLogTemplateExceptions(false);
     }
 
+    /**
+     * Get the freemarker configuration
+     * @return freemarker configuration
+     */
     public Configuration getConfiguration() {
         return configuration;
     }
 
+    /**
+     * Creates a view
+     * @param viewName name of the view
+     * @return freemarker view
+     * @throws ViewException
+     */
     @Override
     public FreeMarkerView createView(String viewName) throws ViewException {
         try {
